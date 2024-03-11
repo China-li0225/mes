@@ -31,6 +31,8 @@ public interface ISysOssService {
 
     void download(Long ossId, HttpServletResponse response) throws IOException;
 
+    void downloadByUrl(String Url, String service, String fileName, HttpServletResponse response) throws IOException;
+
     Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
 
 }

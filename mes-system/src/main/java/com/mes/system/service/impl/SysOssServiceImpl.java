@@ -123,6 +123,24 @@ public class SysOssServiceImpl implements ISysOssService, OssService {
     }
 
     @Override
+    public void downloadByUrl(String Url, String service, String fileName, HttpServletResponse response) throws IOException {
+        if (fileName.length() > 1){
+            FileUtils.setAttachmentResponseHeader(response,fileName);
+        }else {
+            FileUtils.setAttachmentResponseHeader(response,Url);
+        }
+        response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=UTF-8");
+        OssClient storage = OssFactory.instance(service);
+        try(InputStream inputStream = storage.getObjectContent(Url)) {
+            int available = inputStream.available();
+            IoUtil.copy(inputStream, response.getOutputStream(), available);
+            response.setContentLength(available);
+        } catch (Exception e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
     public SysOssVo upload(MultipartFile file) {
         String originalfileName = file.getOriginalFilename();
         String suffix = StringUtils.substring(originalfileName, originalfileName.lastIndexOf("."), originalfileName.length());
