@@ -1,5 +1,6 @@
 package com.mes.web.mes.service.impl;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.api.client.util.SecurityUtils;
 import com.mes.common.core.domain.model.LoginUser;
@@ -37,11 +38,14 @@ public class TestServiceImpl extends ServiceImpl<TestMapper, Test> implements Te
 
 
     @Override
+    @SaIgnore
     @Transactional(rollbackFor = Exception.class)
     public Map testTransactional(String a) throws Exception {
-        LoginUser user = LoginHelper.getLoginUser();
+        LoginUser user = new LoginUser();
+        user.setUsername("lixing");
         Map<String,String> stringMap = new HashMap<>();
         Test test = new Test();
+        test.setB(20);
         stringMap.put("mybatisclass", String.valueOf(baseMapper.insert(test)));
         stringMap.put("mybatissql", String.valueOf(baseMapper.insertTest(test,user)));
 

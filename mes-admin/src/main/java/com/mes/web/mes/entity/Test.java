@@ -17,6 +17,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @TableName("test")
 public class Test extends BaseEntity {
-    private String a;
-    private String b;
+    private int a;
+    private int b;
 }
