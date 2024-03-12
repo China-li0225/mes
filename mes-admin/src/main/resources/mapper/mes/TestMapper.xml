@@ -8,4 +8,7 @@
         <id     property="a"         column="a"        />
         <result property="b"          column="b"          />
     </resultMap>
+    <insert id="insertTest">
+        insert into test(a,b,create_by,create_time) values (#{test.a},#{test.b},#{user.username},now())
+    </insert>
 </mapper>

@@ -5,6 +5,8 @@ import com.mes.web.mes.entity.Test;
 import com.mes.web.mes.mapper.TestMapper;
 import org.ehcache.spi.service.Service;
 
+import java.util.Map;
+
 /**
  * ClassName: TestService <br/>
  * Description: <br/>
@@ -15,4 +17,6 @@ import org.ehcache.spi.service.Service;
  */
 public interface TestService extends IService<Test> {
     String test();
+
+    Map testTransactional(String a) throws Exception;
 }

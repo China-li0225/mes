@@ -9,12 +9,15 @@ import com.mes.system.service.ISysOssService;
 import com.mes.web.mes.service.TestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * ClassName: ApitestController <br/>
@@ -60,5 +63,12 @@ public class ApitestController {
     @SaIgnore
     public void downloadFile(HttpServletResponse response , String fileName,String url) throws IOException {
         iSysOssService.downloadByUrl(url,"minio",fileName,response);
+    }
+
+    //spring事务测试
+    @GetMapping("/testTransactional")
+    @SaIgnore
+    public R testTransactional(String a) throws Exception {
+        return R.ok(testService.testTransactional(a));
     }
 }
