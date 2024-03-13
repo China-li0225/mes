@@ -1,6 +1,7 @@
 package com.mes.web.mes.controller;
 
 import cn.dev33.satoken.annotation.SaIgnore;
+import cn.hutool.core.io.IoUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mes.common.core.domain.R;
 import com.mes.system.domain.vo.SysOssVo;
@@ -9,12 +10,15 @@ import com.mes.system.service.ISysOssService;
 import com.mes.web.mes.service.TestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -70,5 +74,25 @@ public class ApitestController {
     @SaIgnore
     public R testTransactional(String a) throws Exception {
         return R.ok(testService.testTransactional(a));
+    }
+
+
+
+    /**
+     *  下载本地文件
+     * @param a 本地文件地址
+     * @param response
+     * @throws Exception
+     */
+    @GetMapping("/downloadFileLocal")
+    @SaIgnore
+    public void downloadFileLocal(String a,HttpServletResponse response) throws Exception {
+        File file = new File(a);
+        FileInputStream fileInputStream = new FileInputStream(file);
+        int available = fileInputStream.available();
+        response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=UTF-8");
+        response.addHeader("Content-Disposition","inline; filename=" + file.getName());
+        IoUtil.copy(fileInputStream,response.getOutputStream(),available);
+        response.setContentLength(available);
     }
 }
