@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.admin.mapper.MesPurchaseOrderMapper">
+
+    <resultMap type="com.mes.web.mes.entity.MesPurchaseOrder" id="MesPurchaseOrderResult">
+        <result property="id" column="id"/>
+        <result property="purchaseNo" column="purchase_no"/>
+        <result property="purchaseType" column="purchase_type"/>
+        <result property="purchaseState" column="purchase_state"/>
+        <result property="startDept" column="start_dept"/>
+        <result property="startDeptId" column="start_dept_id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+    </resultMap>
+
+
+</mapper>
