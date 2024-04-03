@@ -47,58 +47,6 @@
       :limit.sync="queryParams.pageSize"
       @pagination="getList"
     />
-
-<!--    &lt;!&ndash; 添加或修改采购订单明细对话框 &ndash;&gt;-->
-<!--    <el-dialog :title="title" v-model="open" width="800px" append-to-body>-->
-<!--      <el-form ref="form" :model="form" :rules="rules" label-width="120px">-->
-<!--        <el-form-item label="采购订单号" prop="purchaseNo">-->
-<!--          <el-input v-model="form.purchaseNo" placeholder="请输入采购订单号" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="物料id" prop="matId">-->
-<!--          <el-input v-model="form.matId" placeholder="请输入物料id" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="物料名称" prop="matName">-->
-<!--          <el-input v-model="form.matName" placeholder="请输入物料名称" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="物料大类编码" prop="matTypeNo">-->
-<!--          <el-input v-model="form.matTypeNo" placeholder="请输入物料大类编码" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="规格" prop="model">-->
-<!--          <el-input v-model="form.model" placeholder="请输入规格" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="颜色" prop="color">-->
-<!--          <el-input v-model="form.color" placeholder="请输入颜色" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="重量" prop="weight">-->
-<!--          <el-input v-model="form.weight" placeholder="请输入重量" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="长度" prop="lenth">-->
-<!--          <el-input v-model="form.lenth" placeholder="请输入长度" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="数量" prop="num">-->
-<!--          <el-input v-model="form.num" placeholder="请输入数量" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="单位" prop="unit">-->
-<!--          <el-input v-model="form.unit" placeholder="请输入单位" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="单位单价" prop="prices">-->
-<!--          <el-input v-model="form.prices" placeholder="请输入单位单价" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="不含税单价" prop="taxFreePrice">-->
-<!--          <el-input v-model="form.taxFreePrice" placeholder="请输入不含税单价" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="含税总价" prop="sumPricesTax">-->
-<!--          <el-input v-model="form.sumPricesTax" placeholder="请输入含税总价" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="备注" prop="remark">-->
-<!--          <el-input v-model="form.remark" placeholder="请输入备注" />-->
-<!--        </el-form-item>-->
-<!--      </el-form>-->
-<!--      <div slot="footer" class="dialog-footer">-->
-<!--        <el-button :loading="buttonLoading" type="primary" @click="submitForm">确 定</el-button>-->
-<!--        <el-button @click="cancel">取 消</el-button>-->
-<!--      </div>-->
-<!--    </el-dialog>-->
   </div>
 </template>
 

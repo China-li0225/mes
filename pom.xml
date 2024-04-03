@@ -335,6 +335,7 @@
         <module>mes-extend</module>
         <module>mes-oss</module>
         <module>mes-sms</module>
+        <module>mes-video</module>
     </modules>
     <packaging>pom</packaging>
 
