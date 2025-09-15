@@ -6,9 +6,13 @@ import com.alibaba.ttl.TransmittableThreadLocal;
 import com.mes.common.filter.RepeatedlyRequestWrapper;
 import com.mes.common.utils.JsonUtils;
 import com.mes.common.utils.StringUtils;
+import com.mes.common.utils.redis.RedisUtils;
 import com.mes.common.utils.spring.SpringUtils;
+import com.mes.common.weixin.AccessTokenUtils;
+import com.mes.weixin.service.WXAccessTokenService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.StopWatch;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
+import java.time.Duration;
 import java.util.Map;
 
 /**
@@ -34,6 +39,18 @@ public class PlusWebInvokeTimeInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        //微信api拦截
+        if(true){//微信access_token验证，失效重新获取  暂时拦截所有请求
+            //查询有效期，有效时间小于100秒则重新获取
+            String key = "WXAccessToken";
+            int expires_in = (int) (RedisUtils.getTimeToLive(key)/1000);
+            if (expires_in<100){
+                AccessTokenUtils.getAccessToken();
+            }else {
+                System.out.println("微信AccessToken有效期剩余：" + expires_in);
+            }
+        }
+
         if (!prodProfile.equals(SpringUtils.getActiveProfile())) {
             String url = request.getMethod() + " " + request.getRequestURI();
 

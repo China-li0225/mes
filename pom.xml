@@ -292,6 +292,12 @@
                 <artifactId>mes-system</artifactId>
                 <version>${mes-vue-plus.version}</version>
             </dependency>
+            <!-- 微信模块-->
+<!--            <dependency>-->
+<!--                <groupId>com.mes</groupId>-->
+<!--                <artifactId>mes-weixin</artifactId>-->
+<!--                <version>${mes-vue-plus.version}</version>-->
+<!--            </dependency>-->
 
             <!-- 通用工具-->
             <dependency>
@@ -336,6 +342,8 @@
         <module>mes-oss</module>
         <module>mes-sms</module>
         <module>mes-video</module>
+        <module>mes-weixin</module>
+        <!--        <module>mes-weixin</module>-->
     </modules>
     <packaging>pom</packaging>
 

@@ -16,7 +16,6 @@
     </description>
 
     <dependencies>
-
         <!-- spring-boot-devtools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -65,6 +64,11 @@
             <groupId>com.mes</groupId>
             <artifactId>mes-oss</artifactId>
         </dependency>
+<!--        微信模块-->
+<!--        <dependency>-->
+<!--            <groupId>com.mes</groupId>-->
+<!--            <artifactId>mes-weixin</artifactId>-->
+<!--        </dependency>-->
 
         <!-- 代码生成-->
         <dependency>
@@ -82,6 +86,24 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.0.5.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mes</groupId>
+            <artifactId>mes-weixin</artifactId>
+            <version>4.8.1</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- skywalking 整合 logback -->

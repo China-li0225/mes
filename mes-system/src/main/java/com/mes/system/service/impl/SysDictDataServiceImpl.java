@@ -70,6 +70,14 @@ public class SysDictDataServiceImpl implements ISysDictDataService {
             .getDictLabel();
     }
 
+    @Override
+    public SysDictData selectDictClass(String dictType, String dictValue) {
+        return baseMapper.selectOne(new LambdaQueryWrapper<SysDictData>()
+            .select(SysDictData::getDictLabel)
+            .eq(SysDictData::getDictType, dictType)
+            .eq(SysDictData::getDictValue, dictValue));
+    }
+
     /**
      * 根据字典数据ID查询信息
      *
